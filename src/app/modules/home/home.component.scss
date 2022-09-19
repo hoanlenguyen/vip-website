@@ -1,0 +1,13 @@
+.home {
+    &__wrapper {
+        @apply flex justify-evenly mx-auto;
+        width: 90%;
+    }
+    &__sidebar {
+        @apply w-1/5;
+    }
+    &__product {
+        @apply w-3/4;
+    }
+}
+

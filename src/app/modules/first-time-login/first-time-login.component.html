@@ -1,0 +1,36 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <form class="first-time-login__wrapper" [formGroup]="form" autocomplete="off">
+        <div class="first-time-login__wrapper__title">
+            {{'First Time Login'| translate}}
+        </div>
+        <div class="first-time-login__wrapper__auth">
+            <div class="first-time-login__wrapper__auth--username">
+                <label for="username">{{'Username'| translate}}</label>
+                <input id="username" type="text" formControlName="username">
+            </div>
+            <ng-container  formGroupName="passwordGroup">
+                <div class="first-time-login__wrapper__auth--password">
+                    <label for="password">{{'Password'| translate}}</label>
+                    <input id="password" type="password" formControlName="password">
+                </div>
+                <div class="first-time-login__wrapper__auth--confirm-password">
+                    <label for="confirmPassword">{{'Confirm Password'| translate}}</label>
+                    <input id="confirmPassword" type="password" formControlName="confirmPassword">
+                </div>
+                <span *ngIf="form.hasError('password_not_match', 'passwordGroup') && passwordGroup.touched" class="text-red-500 ml-38">
+                    {{'Password does not match'| translate}}
+                </span>
+            </ng-container>
+            <div class="first-time-login__wrapper__auth--security-code">
+                <label for="securityCode">{{'Security Code'| translate}}</label>
+                <input id="securityCode" type="text" formControlName="securityCode">
+            </div>
+        </div>
+        <div class="first-time-login__wrapper__action">
+            <button [disabled]="vm.status === 'loading'" vip-button vipColor="primary-cold" vipType="outlined">{{'Back'| translate}}</button>
+            <button [disabled]="form.invalid" vip-button vipColor="primary-cold" [vipStatus]="vm.status" type="submit" (click)="onSubmit()">
+                {{'Login'| translate}}
+            </button>
+        </div>
+    </form>
+</ng-container>

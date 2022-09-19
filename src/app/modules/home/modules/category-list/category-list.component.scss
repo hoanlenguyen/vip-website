@@ -1,0 +1,35 @@
+.category-list {
+    &__wrapper {
+        @apply flex flex-col items-center h-full overflow-hidden bg-primary-light border border-solid border-gray-200 rounded;
+    }
+    &__header {
+        @apply flex justify-center items-center w-full bg-primary-dark py-5;
+        &--title {
+            @apply ml-2 text-base text-white font-semibold;
+        }
+    }
+    &__list {
+        @apply w-full overflow-auto;
+        height: 493px;
+    }
+    &__item-container {
+        @apply flex flex-col items-center w-full mt-3 border-t border-gray-400 cursor-pointer;
+    }
+    &__item {
+        @apply flex items-center w-full h-12 px-3 rounded-bl rounded-br hover:bg-primary-cold hover:text-white;
+        &.isSelected {
+            @apply bg-primary-cold text-white;
+        }
+        &--title {
+            @apply ml-2 text-base font-medium;
+            display:-webkit-box;
+            -webkit-line-clamp:1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
+    }
+
+}
+

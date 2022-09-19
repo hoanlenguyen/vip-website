@@ -1,0 +1,8 @@
+.language {
+    &__wrapper {
+        @apply inline-block relative;
+    }
+    &__option {
+        @apply block w-full bg-white px-4 py-2 rounded leading-tight focus:outline-none hover:cursor-pointer;
+    }
+}

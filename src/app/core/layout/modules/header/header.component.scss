@@ -1,0 +1,56 @@
+.header {
+    &__wrapper {
+        @apply bg-slate-100; 
+    }
+    &__container {
+        @apply flex justify-between items-center h-12 px-4 py-7 font-poppins;
+    }
+    &__info {
+        @apply flex items-center justify-start gap-5;
+        &__auth {
+            @apply hidden;
+        }
+    }
+    &__assistance {
+        @apply flex items-center gap-2;
+        &__cart {
+            @apply relative;
+            &--amount {
+                @apply absolute right-0 top-0 w-4 h-4 bg-red-600 rounded-full text-center text-sm text-white font-poppins;
+            }
+        }
+    }
+    &__menu {
+        @apply flex items-center justify-between gap-3 h-15 bg-primary-dark text-primary-light font-poppins relative;
+        &__list {
+            @apply flex mx-auto;
+        }
+        &__auth {
+            @apply absolute right-0;
+        }
+        &__item {
+            @apply flex justify-center cursor-pointer h-15 py-5 text-base w-61;
+    
+            &--selected {
+                @apply bg-secondary-dark;
+            }
+    
+            &:hover {
+                @apply bg-secondary-light;
+            }
+        }
+    }
+}
+
+// button.vip-btn.mr-15.vip-btn-danger.vip-btn-fill, button.vip-btn.mr-15.vip-btn-danger.vip-btn-outlined {
+//     @apply px-20;
+// }
+
+@media screen and (max-width: 1400.98px) {
+    .header__info__auth {
+        @apply block;
+    }
+    .header__menu__auth {
+        @apply hidden;
+    }
+}

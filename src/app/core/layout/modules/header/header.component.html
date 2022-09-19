@@ -1,0 +1,54 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <section class="header__wrapper">
+        <div class="header__container">
+            <div class="header__info">
+                <ng-container *ngIf="vm.user">
+                    <span>{{ 'Hello' | translate }}, {{ vm.user.full_name }}</span>
+                    <span>{{ 'Credit' | translate }}: 1500</span>
+                    <ng-container *ngIf="vm.isAuthenticated">
+                        <div class="header__info__auth">
+                            <button vip-button vipColor="danger" type="button"
+                            (click)="logOut()">{{ 'Log Out' | translate }}</button> 
+                        </div>
+                    </ng-container>  
+                </ng-container>   
+                <ng-container *ngIf="!vm.isAuthenticated">
+                    <div class="header__info__auth">
+                        <button class="mr-15" vip-button vipColor="danger" type="button"
+                        (click)="navigateToLogin()">{{ 'Login' | translate }}</button>
+                    </div>
+                </ng-container>             
+            </div>
+            <div class="header__assistance">
+                <vip-language class="mr-5"></vip-language>
+                <div class="header__assistance__cart">
+                    <span class="header__assistance__cart--amount" *ngIf="vm.amount !== 0 && vm.isAuthenticated">{{ vm.amount }}</span>
+                    <i class="fa-sharp fa-solid fa-cart-shopping text-2xl cursor-pointer" (click)="onCartClick()"></i>
+                </div>
+            </div>
+        </div>
+        <div class="header__menu">
+            <div class="header__menu__list">
+                <ng-container *ngFor="let menuItem of vm.menuList; let idx= index;">
+                    <a class="header__menu__item"
+                        [ngClass]="{'header__menu__item--selected':menuItem.isSelect}" (click)="onClickMenu(menuItem.url)"
+                        [routerLink]="menuItem.url">
+                        {{ menuItem.name | translate }}
+                    </a>
+                </ng-container>
+            </div>
+            <ng-container *ngIf="!vm.isAuthenticated">
+                <div class="header__menu__auth">
+                    <button class="mr-15" vip-button vipColor="danger" type="button"
+                    (click)="navigateToLogin()">{{'Login' | translate }}</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="vm.isAuthenticated">
+                <div class="header__menu__auth">
+                    <button class="mr-15" vip-button vipColor="danger" type="button"
+                    (click)="logOut()">{{'Log Out' | translate }}</button> 
+                </div>
+            </ng-container>            
+        </div>
+    </section>
+</ng-container>

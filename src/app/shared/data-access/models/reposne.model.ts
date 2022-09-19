@@ -1,0 +1,14 @@
+export interface BEResponse<T> {
+    success: boolean,
+    message: string,
+    detail: any,
+    data: T
+}
+
+export interface Pagination {
+    total: number,
+    count: number,
+    per_page: number,
+    current_page: number,
+    total_pages: number
+}

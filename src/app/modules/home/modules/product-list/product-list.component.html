@@ -1,0 +1,47 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <section class="product-list__wrapper">
+        <ng-container *ngIf="vm.products.length > 0">
+            <div class="product-list__cards">
+                <ng-container *ngFor="let product of vm.products">
+                    <div class="product-list__card">
+                        <img
+                        [src]="product.images ? product.images[0].url : ''"                      
+                        alt=""
+                        class="product-list__card__image">
+                        <div class="product-list__card__content">
+                            <div class="product-list__card--top">
+                                <h3 class="product-list__card__title" (click)="onNavigate(product.id)">{{ product.name }}</h3>
+                                <div class="product-list__card__amount">
+                                    <span class="product-list__card__amount--point-title">Point</span>
+                                    <span class="product-list__card__amount--cost">{{ product.cost | number }}</span>
+                                </div>
+                                </div>
+                            <div class="product-list__card--bottom">
+                                <button 
+                                vip-button 
+                                vipType="outlined" 
+                                vipColor="primary-cold"
+                                (click)="addToCart(product)" 
+                                >Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="vm.status === 'loading' || vm.status === 'error'">
+            <div class="product-list__wrapper--loading">
+                <vip-loading></vip-loading>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="vm.pagination as pagination">
+            <vip-pagination
+            *ngIf="pagination.total_pages > 1"
+            [currentPage]="pagination.current_page" 
+            [totalPage]="pagination.total_pages" 
+            (indexChange)="fetchProducts($event, vm.pagination)"
+            ></vip-pagination>
+        </ng-container>
+    </section>
+</ng-container>
+

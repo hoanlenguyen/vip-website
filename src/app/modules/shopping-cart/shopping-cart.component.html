@@ -1,0 +1,108 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <section class="shopping-cart__wrapper">
+        <div class="shopping-cart__container">
+            <table class="shopping-cart__table">
+                <thead class="shopping-cart__table__header-container">
+                    <tr class="shopping-cart__table__header-container__header">
+                        <th class="shopping-cart__table__header-container__header--column">
+                            {{'Product' | translate}}
+                        </th>
+                        <th class="shopping-cart__table__header-container__header--column">
+                            {{'Unit Price' | translate}}
+                        </th>
+                        <th class="shopping-cart__table__header-container__header--column">
+                            {{'Quantity' | translate}}
+                        </th>
+                        <th class="shopping-cart__table__header-container__header--column">
+                            {{'Sub Total' | translate}}
+                        </th>
+                        <th class="shopping-cart__table__header-container__header--column">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="shopping-cart__table__header-container__body-container">
+                    <tr *ngFor="let shoppingCart of vm.shoppingCartList;">
+                        <td class="shopping-cart__table__header-container__body-container--product">
+                            <div class="shopping-cart__table__header-container__body-container--product__container">
+                                <img 
+                                    [src]="shoppingCart.product.images ? shoppingCart.product.images[0].url : ''" 
+                                    [alt]="shoppingCart.product.name"
+                                    class="shopping-cart__table__header-container__body-container--product__container__image" 
+                                />
+                                <p
+                                    class="shopping-cart__table__header-container__body-container--product__container__title truncate-2">
+                                    {{shoppingCart.product.name}}
+                                </p>
+                                <div
+                                    class="shopping-cart__table__header-container__body-container--product__container__color-item">
+                                    <span>{{'Color' | translate}}:</span>
+                                    <span
+                                        class="shopping-cart__table__header-container__body-container--product__container__color-item--color"
+                                        [style.--itemColor]="shoppingCart['color']"></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="shopping-cart__table__header-container__body-container--unit-price">
+                            <div class="text-sm text-center text-gray-900">
+                                {{ shoppingCart.product.cost | number }}
+                            </div>
+                        </td>
+                        <td class="shopping-cart__table__header-container__body-container--quantity">
+                            <div
+                                class="shopping-cart__table__header-container__body-container--quantity__quantity-container">
+                                <button class="decrease" [disabled]="shoppingCart.quantity <= 1" vip-button
+                                    vipType="outlined" vipColor="primary-cold" type="button"
+                                    (click)="changeQuantity(shoppingCart.quantity-1,shoppingCart.id)">-</button>
+                                <input
+                                    class="shopping-cart__table__header-container__body-container--quantity__quantity-container__quantity-input"
+                                    type="number"
+                                    [value]="shoppingCart.quantity"
+                                    (change)="inputChange($event,shoppingCart.id)" />
+                                <button class="increase" vip-button vipType="outlined" vipColor="primary-cold"
+                                    type="button"
+                                    (click)="changeQuantity(shoppingCart.quantity+1,shoppingCart.id)">+</button>
+                            </div>
+                        </td>
+                        <td class="shopping-cart__table__header-container__body-container--sub-total">
+                            {{ shoppingCart.subTotal | number }}
+                        </td>
+                        <td class="shopping-cart__table__header-container__body-container--action">
+                            <button (click)="removeShoppingCartItem(shoppingCart.id)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-6 py-4 text-xs text-primary-dark" colspan="5">
+                            <div class="flex justify-between">
+                                <h2 class="text-xl text-primary-dark">{{ 'Grand Total' | translate }}</h2>
+                                <h2 class="text-xl text-primary-dark">{{ vm?.grandTotal | number }}</h2>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="shopping-cart__footer">
+            <button 
+                vip-button 
+                vipType="outlined" 
+                vipColor="primary-cold"
+                (click)="onClickContinueShopping()"
+            >
+                {{'Continue Shopping' | translate}}
+            </button>
+            <button 
+                vip-button vipType="fill" 
+                vipColor="primary-cold" 
+                (click)="onClickCheckout()"
+            >
+                {{'Checkout' |translate}}
+            </button>
+        </div>
+    </section>
+</ng-container>

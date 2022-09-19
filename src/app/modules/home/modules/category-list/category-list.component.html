@@ -1,0 +1,28 @@
+<section class="category-list__wrapper">
+    <div class="category-list__header">
+        <span class="category-list__header--title">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            {{'CATEGORY' | translate}}
+        </span>
+    </div>
+    <ng-container *ngIf="vm$ | async as vm">
+        <div class="category-list__list">
+            <ng-container *ngIf="vm.categories">
+                <div class="category-list__item-container">
+                    <ng-container *ngFor="let item of vm.categories; index as i; first as isFirst">
+                        <div class="category-list__item" 
+                            [class.bg-slate-100]="i % 2 !== 0"
+                            [class.isSelected]="vm.selectedId === item.id"
+                            (click)="onSelected(item.id)"
+                        >
+                            <span class="category-list__item--title">{{ item.name }}</span>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="vm.status === 'loading' || vm.status === 'error'">
+                        <vip-loading></vip-loading>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</section>

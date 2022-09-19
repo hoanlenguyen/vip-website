@@ -1,0 +1,16 @@
+.layout {
+    &__wrapper {
+        @apply flex flex-col gap-25;
+        margin-top: 116px; //TODO: Haven't confirm these infomations gonna push on header
+    }
+    &__content {
+        min-height: 300px;
+    }
+    &__footer {
+        height: 500px;
+    }
+}
+
+vip-header {
+    @apply fixed top-0 left-0 right-0 z-50;
+}

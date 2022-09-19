@@ -1,0 +1,26 @@
+.first-time-login {
+    &__wrapper {
+        @apply w-125 m-auto flex flex-col gap-5 py-25;
+        &__title {
+            @apply flex justify-center items-center font-poppins text-3xl;
+        }
+        &__auth {
+            @apply flex flex-col justify-center gap-2;
+            label {
+                @apply w-50 text-[#5F5F5F] text-sm text-end font-poppins;
+            }
+            &--username, &--password, &--security-code, &--confirm-password {
+                @apply flex items-center gap-4;
+                input {
+                    @apply w-full outline-none px-3.5 py-2.25 bg-[#FFFFFF] rounded text-sm text-[#8C8C8C] border border-solid focus-within:border-primary-cold;
+                }
+            }
+            &--error {
+                @apply w-85 flex justify-center items-center p-3 bg-red-300 text-red-700 rounded;
+            }
+        }
+        &__action {
+            @apply flex justify-end items-center gap-5;
+        }
+    }
+}

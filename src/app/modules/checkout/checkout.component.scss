@@ -1,0 +1,111 @@
+.checkout {
+    &__wrapper {
+      @apply w-2/3 mt-8 flex flex-col justify-center mx-auto font-poppins;
+    }
+  
+    &__container {
+      @apply flex flex-1 flex-col mb-8;
+    }
+  
+    &__shipping-detail {
+      @apply grid grid-cols-2 grid-rows-4 gap-x-5 gap-y-3 p-12 border-2 mb-4 relative;
+      
+      &__title {
+        @apply absolute -top-2 right-0 left-0 mx-auto text-center leading-[12px] text-2xl;
+        span {
+          @apply bg-primary-light;
+        }
+      }
+
+      &__input {
+        @apply shadow appearance-none border rounded w-full py-2 px-3 text-primary-dark leading-tight focus:outline-none;
+      }
+
+      &__option {
+        @apply  inline-block relative w-full;
+        select {
+          @apply block appearance-none w-full bg-white border px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none;
+        }
+      }
+      &__icon {
+        @apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700;
+        svg {
+          @apply fill-current h-4 w-4;
+        }
+      }
+    }
+    &__footer {
+      @apply flex justify-end;
+    }
+  
+    &__table {
+      @apply divide-y w-full divide-gray-300 border-collapse border;
+      &__container {
+        @apply bg-gray-50;
+      }
+
+      &__header {
+        @apply whitespace-nowrap;
+        &--column {
+          @apply border px-6 py-2 text-xs text-primary-dark;
+        }
+      }
+
+      &__body {
+        @apply bg-white divide-y divide-gray-300;
+
+        &--product {
+          @apply border px-2 py-2 lg:px-4 lg:py-4 max-w-xs;
+        }
+
+        &__container {
+          @apply flex flex-col justify-center;
+        }
+        
+        &__image {
+          @apply mb-2 max-w-fit max-h-40;
+        }
+        &__title {
+          @apply mb-2;
+        }
+        &__color-item {
+          @apply flex items-center gap-3;
+          &--color {
+            --item-body-width: 30px;
+            --item-body-height: 30px;
+            @apply rounded-full;
+            background-color: var(--itemColor);
+            width: var(--item-body-width);
+            height: var(--item-body-height);
+          }
+        }
+        &--quantity {
+          @apply border px-6 py-4 text-center;
+        }
+        &--unit-price, &--action {
+          @apply border px-6 py-4 text-center;
+        }
+
+        &--sub-total {
+          @apply border text-center px-6 py-4 text-sm text-primary-dark;
+        }
+
+        &--grand-total {
+          @apply border px-6 py-4 text-xs text-primary-dark;
+          div {
+            @apply flex justify-between;
+            h2 {
+              @apply text-xl text-primary-dark;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  select {
+    @apply text-gray-400;
+    option:not(first-child) {
+      @apply text-primary-dark;
+    }
+  }

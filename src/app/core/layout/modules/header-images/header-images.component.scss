@@ -1,0 +1,17 @@
+.header-images {
+    &__container {
+        @apply w-full h-125 relative bg-cover bg-center bg-no-repeat;
+    }
+
+    &__info {
+        @apply text-primary-light absolute top-27 left-32 w-1/2;
+    }
+}
+
+img {
+    @apply w-full h-full object-cover;
+}
+
+.carousel-indicators {
+    @apply ml-1/2;
+}

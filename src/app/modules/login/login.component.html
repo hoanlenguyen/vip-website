@@ -1,0 +1,28 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <form class="login__wrapper" (ngSubmit)="onSubmit()" [formGroup]="form" autocomplete="off">
+        <div class="login__wrapper__title">
+            {{'Login Page' | translate}}
+        </div>
+        <div class="login__wrapper__auth">
+            <div class="login__wrapper__auth--username">
+                <label for="username"> {{'Username' | translate}}</label>
+                <input id="username" type="text" formControlName="username">
+            </div>
+            <div class="login__wrapper__auth--password">
+                <label for="password">{{'Password' | translate}}</label>
+                <input id="password" type="password" formControlName="password">
+            </div>
+            <div class="login__wrapper__auth--brand">
+                <label for="brand">{{'Brand' | translate}}</label>
+                <input id="brand" type="brand">
+            </div>
+        </div>
+        <div class="login__wrapper__action">
+            <button [disabled]="form.invalid" vip-button vipColor="primary-cold" [vipStatus]="vm.status">{{'Login' | translate}}</button>
+        </div>
+        <div class="login__wrapper__redirect">
+            <a (click)="onNavigate('first-time-login')">{{'First Time Login' | translate}}</a>
+            <a (click)="onNavigate('forget-password')">{{'Forget Password' | translate}}</a>
+        </div>
+    </form>
+</ng-container>

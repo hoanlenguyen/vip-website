@@ -1,0 +1,93 @@
+<ng-container *ngIf="vm$ |async as vm">
+    <section class="checkout__wrapper">
+        <div class="checkout__container">
+            <form [formGroup]="shippingDetailForm">
+                <div class="checkout__shipping-detail">
+                    <span class="checkout__shipping-detail__title">
+                        <span>{{'Shipping Detail' | translate}}</span>
+                    </span>
+                    <input class="checkout__shipping-detail__input" 
+                    formControlName="fullName" type="text" placeholder="{{'Name' | translate}}">
+                    <input class="checkout__shipping-detail__input" 
+                        formControlName="mobileNo" type="text" placeholder="{{'Mobile No' | translate}}">
+                    <input class="checkout__shipping-detail__input" 
+                        formControlName="address1" type="text" placeholder="{{'Address 1' | translate}}">
+                    <input class="checkout__shipping-detail__input" 
+                        formControlName="address2" type="text" placeholder="{{'Address 2' | translate}}">
+                    <input class="checkout__shipping-detail__input" 
+                        formControlName="city" type="text" placeholder="{{'City' | translate}}">
+                    <input class="checkout__shipping-detail__input" 
+                        formControlName="postCode" type="text" placeholder="{{'Postcode' | translate}}">
+                    <input class="checkout__shipping-detail__input" 
+                        formControlName="state" type="text" placeholder="{{'State' | translate}}">
+                    <div class="checkout__shipping-detail__option">
+                        <select formControlName="country">
+                            <option value="" disabled selected hidden>
+                                {{'Country' | translate}}
+                            </option>
+                            <option value="Thailand">Thailand</option>
+                        </select>
+                        <div class="checkout__shipping-detail__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <table class="checkout__table">
+                    <thead class="checkout__table__container">
+                        <tr class="checkout__table__container__header">
+                            <th class="checkout__table__container__header--column">
+                                {{'Product' | translate}}
+                            </th>
+                            <th class="checkout__table__container__header--column">
+                                {{'Unit Price' | translate}}
+                            </th>
+                            <th class="checkout__table__container__header--column">
+                                {{'Quantity' | translate}}
+                            </th>
+                            <th class="checkout__table__container__header--column">
+                                {{'Sub Total' | translate}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="checkout__table__body">
+                        <tr *ngFor="let shoppingCart of vm.shoppingCartList;">
+                            <td class="checkout__table__body--product">
+                                <div class="checkout__table__body__container">
+                                    <img [src]="shoppingCart.product.images[0].url" [alt]="shoppingCart.product.name" 
+                                    class="checkout__table__body__image" />
+                                    <p class="checkout__table__body__title truncate-2">
+                                        {{shoppingCart.product.name}}
+                                    </p>
+                                    <div class="checkout__table__body__color-item">
+                                        <span>{{'Color' | translate}}:</span>
+                                        <span class="checkout__table__body__color-item--color" [style.--itemColor]="shoppingCart['color']"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="checkout__table__body--unit-price">
+                                {{shoppingCart.product.cost |number}}
+                            </td>
+                            <td class="checkout__table__body--quantity">
+                                {{shoppingCart.quantity}}
+                            </td>
+                            <td class="checkout__table__body--sub-total">
+                                {{shoppingCart.subTotal |number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="checkout__table__body--grand-total" colspan="5">
+                                <div>
+                                    <h2>{{'Grand Total' | translate}}</h2>
+                                    <h2>{{vm?.grandTotal | number}}</h2>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+        <div class="checkout__footer">
+            <button vip-button vipType="fill" vipColor="primary-cold" (click)="onClickRedeem()">{{'Redeem' | translate}}</button>
+        </div>
+    </section>
+</ng-container>

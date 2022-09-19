@@ -1,0 +1,61 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './styles/index.scss';
+
+*,
+*::before,
+*::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+:root {
+    --btn-primary-dark: #000000;
+    --btn-primary-cold: #031256;
+    --btn-secondary-dark: #D09D27;
+    --btn-secondary-light: #E7C767;
+    --btn-danger: #d33a2c;
+    --btn-success: #3aa981;
+
+    --primary-dark: #000000;
+    --primary-light: #FFFFFF;
+    --primary-cold: #031256;
+    
+    --secondary-dark: #D09D27;
+    --secondary-light: #E7C767;
+
+}
+
+.truncate-1 {
+    display:-webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.truncate-2 {
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.truncate-4 {
+    display:-webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+body {
+    @apply bg-gray-50;
+}

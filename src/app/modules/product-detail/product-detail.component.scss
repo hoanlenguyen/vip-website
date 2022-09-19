@@ -1,0 +1,134 @@
+.product-details {
+    &__wrapper {
+        --wrapper-width: 75%;
+        @apply flex flex-col gap-5 mx-auto;
+        width: var(--wrapper-width);
+    }
+    &__container {
+        @apply bg-white;
+        box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.05);
+    }
+    &__header {
+        @apply flex items-center justify-between p-8 border-b border-solid;
+    }
+    &__image {
+        --image-width: 30%;
+        @apply px-10 flex flex-col gap-5; 
+        width: var(--image-width);
+        &--top {
+            @apply w-full;
+            img {
+                @apply h-full;
+            }
+            aspect-ratio: 1 / 1;
+            &__slider {
+                @apply flex flex-row w-full h-full overflow-hidden;
+            }
+        }
+        &--bottom {
+            --bottom-spacing: 35px;
+            --bottom-columns: 3;
+            @apply flex justify-between items-center hover:cursor-pointer;
+            margin-left: calc(-1 * var(--bottom-spacing));
+            &__order {
+                @apply rounded bg-red-300;
+                img {
+                    @apply rounded h-full;
+                }
+                width: calc(calc(100% / var(--bottom-columns)) - var(--bottom-spacing));
+                margin-left: var(--bottom-spacing);
+                aspect-ratio: 1 / 1;
+            }
+        }
+    }
+    &__info {
+        --info-width: 70%;
+        @apply flex flex-col justify-between px-10 border-l border-solid border-[#eee];
+        width: var(--info-width);
+    }
+    &__back {
+        @apply uppercase font-poppins font-semibold text-base hover:text-[#0F5EDD];
+        span {
+            @apply ml-6;
+        }
+    }
+    &__buttons {
+        @apply flex items-center gap-5;
+    }
+    &__content {
+        @apply flex py-10;
+    }
+    &__title {
+        @apply font-poppins font-semibold text-lg;
+        display:-webkit-box;
+        -webkit-line-clamp:3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+    }
+    &__colors {
+        @apply flex items-center gap-5 font-poppins;
+        &__title {
+            @apply text-sm font-medium;
+        }
+        &__list {
+            @apply flex items-center gap-4;
+        }
+        &__item {
+            --item-width: 40px;
+            --item-width: 40px;
+            @apply rounded-full hover:cursor-pointer relative;
+            width: var(--item-width);
+            height: var(--item-width);
+            &--body {
+                --item-body-width: 30px;
+                --item-body-height: 30px;
+                @apply rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+                background-color: var(--itemColor);
+                width: var(--item-body-width);
+                height: var(--item-body-height);
+            }
+            &.isSelected {
+                @apply border border-solid border-blue-500 outline-none;
+            }
+        }
+    }
+    &__point {
+        @apply flex items-center gap-5 font-poppins;
+        &__title {
+            @apply text-sm font-medium;
+        }
+        &__number {
+            @apply text-base font-poppins font-semibold text-[#0F5EDD];
+        }
+    }
+    &__quantity {
+        @apply flex items-center gap-5 font-poppins;
+        &__title {
+            @apply text-sm font-medium;
+        }
+        input {
+            @apply w-30 outline-none border border-solid border-[#eee] py-2 px-5 focus-within:border-primary-cold;
+        }
+    }
+    &__category {
+        @apply font-poppins text-[#999];
+    }
+    &__buttons {
+        @apply flex justify-center items-center gap-5;
+    }
+    &__short-description {
+        @apply font-poppins;
+    }
+    &__description {
+        @apply w-full bg-white mx-auto p-10;
+        min-height: 300px;
+        box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.05);
+    }
+}
+
+button.vip-btn.vip-btn-primary-cold.vip-btn-fill.vip-btn-loading-text.animate-pulse {
+    @apply flex justify-center items-center;
+    width: 124px;
+}

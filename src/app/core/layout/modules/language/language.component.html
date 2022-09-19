@@ -1,0 +1,11 @@
+<ng-container *ngIf="vm$ | async as vm">
+    <section class="language__wrapper">
+        <select class="language__option" (change)="changeLanguage($event)">
+            <ng-container *ngFor="let language of vm.languageList">
+                <option [value]="language.value" [selected]="language.value == vm.currentLanguage">
+                    {{ language.name }}
+                </option>
+            </ng-container>
+        </select>
+    </section>
+</ng-container>
